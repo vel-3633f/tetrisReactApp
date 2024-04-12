@@ -1,4 +1,5 @@
 import { useTetris } from "../hooks/tetris";
+import Block from "./block/Block";
 
 export const GameScreen = () => {
   const outData = useTetris();
@@ -8,11 +9,13 @@ export const GameScreen = () => {
         (ary, index) => {
           return (
             <div className="flex" key={index}>
-              {ary.map((num, index) => (
-                <div className="w-10 h-10 bg-red-50" key={index}>
-                  {num}
-                </div>
-              ))}
+              {ary.map((num, index) => {
+                return num === 1 ? (
+                  <Block />
+                ) : (
+                  <div className="w-10 h-10"></div>
+                );
+              })}
             </div>
           );
         }

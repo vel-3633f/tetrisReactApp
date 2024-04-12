@@ -6,17 +6,17 @@ export const useTetris = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const updatedBlockAry = [...currentBlockAry];
-      console.log(updatedBlockAry, currentBlockAry);
-      for (let i = 0; i < 4; i++) {
+      dropLoop: for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 5; j++) {
           if (updatedBlockAry[i][j] === 1) {
             updatedBlockAry[i][j] = 0;
             updatedBlockAry[i + 1][j] = 1;
+            break dropLoop;
           }
         }
       }
       setCurrentBlockAry(updatedBlockAry);
-    }, 2000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
