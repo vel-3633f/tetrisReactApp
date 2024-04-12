@@ -11,9 +11,9 @@ export const GameScreen = () => {
             <div className="flex" key={index}>
               {ary.map((num, index) => {
                 return num === 1 ? (
-                  <Block />
+                  <Block key={index} />
                 ) : (
-                  <div className="w-10 h-10"></div>
+                  <div className="w-10 h-10" key={index}></div>
                 );
               })}
             </div>
