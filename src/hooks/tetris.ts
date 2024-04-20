@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react";
-import { testData } from "../lib/constants/tetrisData";
+import { useEffect } from "react";
+import { iniData } from "../lib/constants/tetrisData";
+import { BlockProps } from "../lib/interface/gameProps";
 
-export const useTetris = () => {
-  const [currentBlockAry, setCurrentBlockAry] = useState(testData);
+export const useTetris = ({ currentBlock, setCurrentBlock }: BlockProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
-      const updatedBlockAry = [...currentBlockAry];
-      dropLoop: for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 5; j++) {
-          if (updatedBlockAry[i][j] === 1) {
-            updatedBlockAry[i][j] = 0;
-            updatedBlockAry[i + 1][j] = 1;
-            break dropLoop;
-          }
-        }
-      }
-      setCurrentBlockAry(updatedBlockAry);
-    }, 5000);
+      const updatedBlock = oneDropFunc(currentBlock);
+      setCurrentBlock(updatedBlock);
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentBlock]);
+};
 
-  return currentBlockAry;
+const oneDropFunc = (block: number[][]) => {
+  const updatedBlock = block.map((row) => [...row]);
+  dropLoop: for (let i = 0; i < iniData.width; i++) {
+    for (let j = 0; j < iniData.height - 1; j++) {
+      if (updatedBlock[i + 1] && updatedBlock[i][j] === 1) {
+        updatedBlock[i][j] = 0;
+        updatedBlock[i + 1][j] = 1;
+        break dropLoop;
+      }
+    }
+  }
+  return updatedBlock;
 };
