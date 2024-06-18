@@ -1,11 +1,8 @@
-import { useRecoilState } from "recoil";
 import { buttonProps } from "../../lib/interface/gameProps";
-import { blockState } from "../../status/blockState";
 
-const Button = ({ item, func }: buttonProps) => {
-  const [currentBlock, setCurrentBlock] = useRecoilState(blockState);
+const Button = ({ item }: buttonProps) => {
   const onClick = () => {
-    func({ currentBlock, setCurrentBlock });
+    console.log("click");
   };
   return (
     <button

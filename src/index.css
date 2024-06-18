@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.husky01{
+  background-image: url("/animalImg/husky/husky01.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky02{
+  background-image: url("/animalImg/husky/husky02.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky03{
+  background-image: url("/animalImg/husky/husky03.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky04{
+  background-image: url("/animalImg/husky/husky04.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky05{
+  background-image: url("/animalImg/husky/husky05.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky06{
+  background-image: url("/animalImg/husky/husky06.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky07{
+  background-image: url("/animalImg/husky/husky07.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky08{
+  background-image: url("/animalImg/husky/husky08.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky09{
+  background-image: url("/animalImg/husky/husky09.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky10{
+  background-image: url("/animalImg/husky/husky10.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}
+.husky11{
+  background-image: url("/animalImg/husky/husky11.png");
+  background-size:cover;
+  background-repeat: no-repeat;/*画像が繰り返すのを防ぐ*/
+}

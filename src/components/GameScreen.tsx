@@ -1,21 +1,19 @@
 import { useRecoilState } from "recoil";
-import { useTetris } from "../hooks/tetris";
+import useCreateMino from "../hooks/useCreateMino";
 import { blockState } from "../status/blockState";
-import Block from "./parts/Block";
 
 export const GameScreen = () => {
-  const [currentBlock, setCurrentBlock] = useRecoilState(blockState);
-  useTetris({ currentBlock, setCurrentBlock });
+  const [currentBoard] = useRecoilState(blockState);
+  const updatedBoard = useCreateMino(currentBoard);
+
   return (
-    <div className="bg-white h-[600px] w-[400px]">
-      {currentBlock.map((ary, index: number) => {
+    <div className="bg-white">
+      {updatedBoard.map((row, r_i) => {
         return (
-          <div className="flex border" key={index}>
-            {ary.map((num, index: number) => {
-              return num === 1 ? (
-                <Block key={index} />
-              ) : (
-                <div className="w-10 h-10" key={index}></div>
+          <div className="flex" key={r_i}>
+            {row.map((val, v_i) => {
+              return (
+                <div className={`w-10 h-10 ${val.className}`} key={v_i}></div>
               );
             })}
           </div>

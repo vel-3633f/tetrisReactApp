@@ -5,5 +5,10 @@ export interface BlockProps {
 
 export interface buttonProps {
   item: string;
-  func: ({ currentBlock, setCurrentBlock }: BlockProps) => void
+}
+
+export interface defaltCellProp {
+  isOccupied: boolean;
+  className: string;
+  direction: string;
 }
