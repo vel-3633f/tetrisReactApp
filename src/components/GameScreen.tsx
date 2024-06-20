@@ -1,14 +1,18 @@
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import useCreateMino from "../hooks/useCreateMino";
 import { blockState } from "../status/blockState";
+import createMino from "../features/createMino";
 
 export const GameScreen = () => {
-  const [currentBoard] = useRecoilState(blockState);
-  const updatedBoard = useCreateMino(currentBoard);
+  const [currentBoard,setCurrentBoard] = useRecoilState(blockState);
+  useEffect(() => {
+    const updatedBoard = createMino(currentBoard);
+    setCurrentBoard(updatedBoard)
+  },[]);
 
   return (
     <div className="bg-white">
-      {updatedBoard.map((row, r_i) => {
+      {currentBoard.map((row, r_i) => {
         return (
           <div className="flex" key={r_i}>
             {row.map((val, v_i) => {

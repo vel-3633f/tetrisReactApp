@@ -5,6 +5,7 @@ export interface BlockProps {
 
 export interface buttonProps {
   item: string;
+  func(): void;
 }
 
 export interface defaltCellProp {

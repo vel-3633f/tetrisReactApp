@@ -1,8 +1,4 @@
-const defaultCell = (className: string) => ({
-  isOccupied: false,
-  className: className,
-  direction: "up",
-});
+import { defaultCell } from "./defaultCell";
 
 const huskyMino = [
   [defaultCell("husky01"), defaultCell(""), defaultCell("husky02")],

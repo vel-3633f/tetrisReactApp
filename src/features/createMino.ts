@@ -1,12 +1,11 @@
 import { animalMinos } from "../lib/constants/animalMino";
 import { defaltCellProp } from "../lib/interface/gameProps";
 
-const useCreateMino = (currentBoard: defaltCellProp[][]) => {
-  const aniRowLength = animalMinos.husky[0].length;
-  const aniColLength = animalMinos.husky.length;
+const createMino = (currentBoard: defaltCellProp[][]) => {
   const upgradedBoard = currentBoard.map((row) => [...row]);
+  // const aniRowLength = animalMinos.husky[0].length;
+  const aniColLength = animalMinos.husky.length;
 
-  console.log(aniColLength, aniRowLength, animalMinos.husky);
   for (let i = 0; i < aniColLength; i++) {
     upgradedBoard[i].splice(3, 3, ...animalMinos.husky[i]);
   }
@@ -14,4 +13,4 @@ const useCreateMino = (currentBoard: defaltCellProp[][]) => {
   return upgradedBoard;
 };
 
-export default useCreateMino;
+export default createMino;
