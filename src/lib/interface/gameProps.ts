@@ -12,4 +12,11 @@ export interface defaltCellProp {
   isOccupied: boolean;
   className: string;
   direction: string;
+  isDropped: boolean;
+}
+
+export interface playerProp {
+  point: number[];
+  isGameOver: boolean;
+  blockMaxleng: number;
 }
