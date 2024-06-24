@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { getBlock } from "../features/getBlock";
+import { directionContainer } from "../lib/constants/defaultCell";
 import { defaltCellProp } from "../lib/interface/gameProps";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
@@ -10,7 +11,26 @@ const useRotateMino = () => {
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
-    const rotatedBlock = rotate(getBlock(player, currentBoard));
+    const block = rotate(getBlock(player, currentBoard));
+
+    const rotatedBlock = block.map((ary) => {
+      return ary.map((val) => {
+        if (val.isOccupied) {
+          switch (val.direction) {
+            case "rotate-0":
+              return { ...val, direction: directionContainer.right };
+            case "rotate-90":
+              return { ...val, direction: directionContainer.down };
+            case "rotate-180":
+              return { ...val, direction: directionContainer.left };
+            case "-rotate-90":
+              return { ...val, direction: directionContainer.up };
+          }
+        }
+        return {...val}
+      });
+    });
+
     for (let i = 0; i < player.blockMaxleng; i++) {
       upgradedBoard[i].splice(3, 4, ...rotatedBlock[i]);
     }

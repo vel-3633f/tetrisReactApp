@@ -2,7 +2,7 @@ import { defaultCellFalse, defaultCellTrue } from "./defaultCell";
 
 const huskyMino = [
   [
-    defaultCellTrue("husky01 rotate-90"),
+    defaultCellTrue("husky01"),
     defaultCellFalse("border"),
     defaultCellTrue("husky02"),
   ],
