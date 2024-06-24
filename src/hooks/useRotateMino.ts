@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { getBlock } from "../features/getBlock";
 import { directionContainer } from "../lib/constants/defaultCell";
 import { defaltCellProp } from "../lib/interface/gameProps";
@@ -7,12 +7,14 @@ import { playerState } from "../status/playerState";
 
 const useRotateMino = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  const [player] = useRecoilState(playerState);
+  const player = useRecoilValue(playerState);
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
+    //blackを回転させている
     const block = rotate(getBlock(player, currentBoard));
 
+    //向きを変更
     const rotatedBlock = block.map((ary) => {
       return ary.map((val) => {
         if (val.isOccupied) {
@@ -27,12 +29,16 @@ const useRotateMino = () => {
               return { ...val, direction: directionContainer.up };
           }
         }
-        return {...val}
+        return { ...val };
       });
     });
 
     for (let i = 0; i < player.blockMaxleng; i++) {
-      upgradedBoard[i].splice(3, 4, ...rotatedBlock[i]);
+      upgradedBoard[i].splice(
+        player.point[1],
+        player.blockMaxleng,
+        ...rotatedBlock[i]
+      );
     }
     setCurrentBoard(upgradedBoard);
   };
@@ -54,20 +60,6 @@ function rotate(array: defaltCellProp[][]): defaltCellProp[][] {
       rotatedBlock[c][r] = array[row - r][c];
     }
   }
-  //向きを変更する
 
   return rotatedBlock;
 }
-
-// 参考
-// export const rotate = ({ piece, direction }) => {
-//   // Transpose rows and columns
-//   const newPiece = piece.map((_, index) =>
-//     piece.map((column) => column[index])
-//   );
-
-//   // Reverse rows to get a rotated matrix
-//   if (direction > 0) return newPiece.map((row) => row.reverse());
-
-//   return newPiece.reverse();
-// };
