@@ -6,7 +6,7 @@ import { playerState } from "../status/playerState";
 
 const useRotateMino = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  const [player, setPlayer] = useRecoilState(playerState);
+  const [player] = useRecoilState(playerState);
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
@@ -36,7 +36,6 @@ function rotate(array: defaltCellProp[][]): defaltCellProp[][] {
   }
   //向きを変更する
 
-  console.log(rotatedBlock)
   return rotatedBlock;
 }
 
