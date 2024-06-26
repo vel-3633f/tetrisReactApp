@@ -1,5 +1,5 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import { getBlock } from "../features/getBlock";
+import { useRecoilState } from "recoil";
+import { getSquareBlock } from "../features/getSquareBlock";
 import { directionContainer } from "../lib/constants/defaultCell";
 import { defaltCellProp } from "../lib/interface/gameProps";
 import { blockState } from "../status/blockState";
@@ -7,12 +7,12 @@ import { playerState } from "../status/playerState";
 
 const useRotateMino = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  const player = useRecoilValue(playerState);
+  const [player, setPlayer] = useRecoilState(playerState);
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
     //blackを回転させている
-    const block = rotate(getBlock(player, currentBoard));
+    const block = rotate(getSquareBlock(player, currentBoard));
 
     //向きを変更
     const rotatedBlock = block.map((ary) => {
@@ -40,6 +40,10 @@ const useRotateMino = () => {
         ...rotatedBlock[i]
       );
     }
+    const nextWidth = player.blockHeight;
+    const nextHeight = player.blockWidth;
+
+    setPlayer({ ...player, blockWidth: nextWidth ,blockHeight:nextHeight});
     setCurrentBoard(upgradedBoard);
   };
 

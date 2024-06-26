@@ -19,4 +19,6 @@ export interface playerProp {
   point: number[];
   isGameOver: boolean;
   blockMaxleng: number;
+  blockHeight: number;
+  blockWidth: number;
 }

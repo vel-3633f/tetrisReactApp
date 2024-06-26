@@ -1,9 +1,12 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { blockState } from "../status/blockState";
 import createMino from "../features/createMino";
+import { playerState } from "../status/playerState";
 
 export const GameScreen = () => {
+  const player = useRecoilValue(playerState)
+  console.log(player)
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
   useEffect(() => {
     const updatedBoard = createMino(currentBoard);

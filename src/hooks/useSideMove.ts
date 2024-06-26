@@ -11,21 +11,31 @@ const useSideMove = () => {
   const rightSideMove = () => {
     const upgradeBoard = clearFunc(currentBoard);
     const blockMino = getBlock(player, currentBoard);
-    for (let i = 0; i < player.blockMaxleng; i++) {
+    for (let i = 0; i < player.blockHeight; i++) {
       upgradeBoard[i].splice(
         player.point[1] + 1,
-        player.blockMaxleng,
+        player.blockWidth,
         ...blockMino[i]
       );
     }
-    console.log(player);
     const nextPosition = [player.point[0], player.point[1] + 1];
     setPlayer({ ...player, point: nextPosition });
     setCurrentBoard(upgradeBoard);
   };
-  
+
   const leftSideMove = () => {
-    console.log("left");
+    const upgradeBoard = clearFunc(currentBoard);
+    const blockMino = getBlock(player, currentBoard);
+    for (let i = 0; i < player.blockHeight; i++) {
+      upgradeBoard[i].splice(
+        player.point[1] - 1,
+        player.blockWidth,
+        ...blockMino[i]
+      );
+    }
+    const nextPosition = [player.point[0], player.point[1] - 1];
+    setPlayer({ ...player, point: nextPosition });
+    setCurrentBoard(upgradeBoard);
   };
   return { rightSideMove, leftSideMove };
 };
