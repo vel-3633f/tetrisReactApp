@@ -1,4 +1,4 @@
-import { useKeyPress, useKeyPressEvent } from "react-use";
+import { useKeyPressEvent } from "react-use";
 import useRotateMino from "../../hooks/useRotateMino";
 import useSideMove from "../../hooks/useSideMove";
 import Button from "./Button";
