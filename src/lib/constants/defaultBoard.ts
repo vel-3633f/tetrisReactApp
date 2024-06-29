@@ -1,11 +1,12 @@
 import { defaultCellFalse } from "./defaultCell";
 // 10*30の配列
 
-const rows = 20;
-const columns = 15;
+export const boardSize = [15, 20];
 
-const builtRows = Array.from({ length: rows }, () =>
-  Array.from({ length: columns }, () => ({ ...defaultCellFalse("border") }))
+const builtRows = Array.from({ length: boardSize[1] }, () =>
+  Array.from({ length: boardSize[0] }, () => ({
+    ...defaultCellFalse("border"),
+  }))
 );
 
 export const iniData = {

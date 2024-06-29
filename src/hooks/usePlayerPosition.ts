@@ -1,13 +1,27 @@
 import { useRecoilState } from "recoil";
-import { blockState } from "../status/blockState";
+import { boardSize } from "../lib/constants/defaultBoard";
+import { defaltCellProp } from "../lib/interface/gameProps";
 import { playerState } from "../status/playerState";
 
 //現在のブロックの左上の位置取得する
 const usePlayerPosition = () => {
-  // const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  // const [player, setPlayer] = useRecoilState(playerState);
+  const [player, setPlayer] = useRecoilState(playerState);
 
-  const getPlayerPosition = () => {};
+  const getPlayerPosition = (upgradeBoard: defaltCellProp[][]) => {
+    const currentPosition = [];
+
+    positionBoard: for (let y = 0; y < boardSize[1]; y++) {
+      for (let x = 0; x < boardSize[0]; x++) {
+        const currentBlock = upgradeBoard[y][x];
+
+        if (currentBlock.isDropped) {
+          currentPosition.push(y, x);
+          break positionBoard;
+        }
+      }
+    }
+    setPlayer({ ...player, point: currentPosition });
+  };
 
   return { getPlayerPosition };
 };
