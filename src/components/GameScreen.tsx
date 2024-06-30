@@ -1,22 +1,32 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import createMino from "../features/createMino";
+import useDropFunc from "../hooks/useDropFunc";
+import usePlayerPosition from "../hooks/usePlayerPosition";
 import { bgImgStyle } from "../lib/constants/animalStyle";
 import { blockState } from "../status/blockState";
-import usePlayerPosition from "../hooks/usePlayerPosition";
 
 export const GameScreen = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
   const { getPlayerPosition } = usePlayerPosition();
-
+  const { dropTime, dropMove } = useDropFunc();
+  
   useEffect(() => {
     const updatedBoard = createMino(currentBoard);
     setCurrentBoard(updatedBoard);
   }, []);
 
   useEffect(() => {
-    getPlayerPosition(currentBoard)
+    getPlayerPosition(currentBoard);
   }, [currentBoard]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(111);
+      dropMove();
+    }, dropTime);
+    return () => clearInterval(interval);
+  }, [dropMove, dropTime]);
 
   return (
     <div className="bg-white">

@@ -5,11 +5,12 @@ export const getSquareBlock = (
   currentBlock: defaltCellProp[][]
 ) => {
   const cuttedBlock: defaltCellProp[][] = [];
+  const playerX = player.point[0];
+  const playerY = player.point[1];
+  const maxLeng = player.blockMaxleng;
 
-  for (let i = 0; i < 4; i++) {
-    cuttedBlock.push(
-      currentBlock[i].slice(player.point[1], player.point[1] + 4)
-    );
+  for (let i = playerX; i < playerX + maxLeng; i++) {
+    cuttedBlock.push(currentBlock[i].slice(playerY, playerY + maxLeng));
   }
   return cuttedBlock;
 };

@@ -8,6 +8,10 @@ import { playerState } from "../status/playerState";
 const useRotateMino = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
   const [player, setPlayer] = useRecoilState(playerState);
+  const playerX = player.point[1];
+  const playerY = player.point[0];
+  const nextWidth = player.blockHeight;
+  const nextHeight = player.blockWidth;
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
@@ -34,16 +38,14 @@ const useRotateMino = () => {
     });
 
     for (let i = 0; i < player.blockMaxleng; i++) {
-      upgradedBoard[i].splice(
-        player.point[1],
+      upgradedBoard[playerY + i].splice(
+        playerX,
         player.blockMaxleng,
         ...rotatedBlock[i]
       );
     }
-    const nextWidth = player.blockHeight;
-    const nextHeight = player.blockWidth;
 
-    setPlayer({ ...player, blockWidth: nextWidth ,blockHeight:nextHeight});
+    setPlayer({ ...player, blockWidth: nextWidth, blockHeight: nextHeight });
     setCurrentBoard(upgradedBoard);
   };
 

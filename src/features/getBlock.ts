@@ -6,7 +6,7 @@ export const getBlock = (
 ) => {
   const cuttedBlock: defaltCellProp[][] = [];
 
-  for (let i = 0; i < player.blockHeight; i++) {
+  for (let i = player.point[0]; i < player.point[0] + player.blockHeight; i++) {
     cuttedBlock.push(
       currentBlock[i].slice(
         player.point[1],
@@ -14,5 +14,7 @@ export const getBlock = (
       )
     );
   }
+
+
   return cuttedBlock;
 };
