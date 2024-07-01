@@ -10,7 +10,7 @@ export const GameScreen = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
   const { getPlayerPosition } = usePlayerPosition();
   const { dropTime, dropMove } = useDropFunc();
-  
+
   useEffect(() => {
     const updatedBoard = createMino(currentBoard);
     setCurrentBoard(updatedBoard);
@@ -22,7 +22,6 @@ export const GameScreen = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(111);
       dropMove();
     }, dropTime);
     return () => clearInterval(interval);

@@ -4,7 +4,7 @@ import { defaltCellProp } from "../lib/interface/gameProps";
 const clearFunc = (currentBoard: defaltCellProp[][]) => {
   const clearedBoard = currentBoard.map((ary) => {
     return ary.map((val) => {
-      if (val.isOccupied) {
+      if (val.isDropped) {
         return defaultCellFalse("border");
       }
       return { ...val };

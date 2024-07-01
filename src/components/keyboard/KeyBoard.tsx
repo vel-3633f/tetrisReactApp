@@ -10,6 +10,7 @@ const KeyBoard = () => {
   useKeyPressEvent("ArrowUp", rotateFunc);
   useKeyPressEvent("ArrowRight", rightSideMove);
   useKeyPressEvent("ArrowLeft", leftSideMove);
+  
   return (
     <div className="flex justify-around items-center h-full">
       <Button item="←" func={leftSideMove} />

@@ -15,11 +15,21 @@ const useSideMove = () => {
     const blockMino = getBlock(player, currentBoard);
 
     for (let i = 0; i < player.blockHeight; i++) {
-      upgradeBoard[playerY + i].splice(
-        playerX + 1,
-        player.blockWidth,
-        ...blockMino[i]
-      );
+      const nextSideBlock =
+        upgradeBoard[playerY + i][playerX + player.blockWidth];
+      if (nextSideBlock) {
+        upgradeBoard[playerY + i].splice(
+          playerX + 1,
+          player.blockWidth,
+          ...blockMino[i]
+        );
+      } else {
+        upgradeBoard[playerY + i].splice(
+          playerX,
+          player.blockWidth,
+          ...blockMino[i]
+        );
+      }
     }
 
     setCurrentBoard(upgradeBoard);
@@ -30,11 +40,20 @@ const useSideMove = () => {
     const blockMino = getBlock(player, currentBoard);
 
     for (let i = 0; i < player.blockHeight; i++) {
-      upgradeBoard[playerY + i].splice(
-        playerX - 1,
-        player.blockWidth,
-        ...blockMino[i]
-      );
+      const nextSideBlock = upgradeBoard[playerY + i][playerX - 1];
+      if (nextSideBlock) {
+        upgradeBoard[playerY + i].splice(
+          playerX - 1,
+          player.blockWidth,
+          ...blockMino[i]
+        );
+      } else {
+        upgradeBoard[playerY + i].splice(
+          playerX,
+          player.blockWidth,
+          ...blockMino[i]
+        );
+      }
     }
 
     setCurrentBoard(upgradeBoard);

@@ -24,8 +24,6 @@ const useDropFunc = () => {
       );
     }
 
-    console.log(player.point)
-
     setCurrentBoard(upgradeBoard);
   };
 
