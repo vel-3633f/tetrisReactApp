@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { getSquareBlock } from "../features/getSquareBlock";
+import rotate from "../features/rotate";
 import { directionContainer } from "../lib/constants/defaultCell";
-import { defaltCellProp } from "../lib/interface/gameProps";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
 
@@ -16,7 +16,9 @@ const useRotateMino = () => {
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
     //blackを回転させている
-    const block = rotate(getSquareBlock(player, currentBoard));
+    const squareBlock = getSquareBlock(player, currentBoard);
+    const block = rotate(squareBlock);
+    let isMove = true;
 
     //向きを変更
     const rotatedBlock = block.map((ary) => {
@@ -38,14 +40,29 @@ const useRotateMino = () => {
     });
 
     for (let i = 0; i < player.blockMaxleng; i++) {
-      upgradedBoard[playerY + i].splice(
-        playerX,
-        player.blockMaxleng,
-        ...rotatedBlock[i]
-      );
+      const nextSideBlock =
+        upgradedBoard[playerY + i][playerX + player.blockWidth];
+      if (!nextSideBlock) isMove = false;
+
+      if (isMove) {
+        upgradedBoard[playerY + i].splice(
+          playerX,
+          player.blockMaxleng,
+          ...rotatedBlock[i]
+        );
+      } else {
+        upgradedBoard[playerY + i].splice(
+          playerX,
+          player.blockMaxleng,
+          ...squareBlock[i]
+        );
+      }
     }
 
-    setPlayer({ ...player, blockWidth: nextWidth, blockHeight: nextHeight });
+    if (isMove) {
+      setPlayer({ ...player, blockWidth: nextWidth, blockHeight: nextHeight });
+    }
+
     setCurrentBoard(upgradedBoard);
   };
 
@@ -53,19 +70,3 @@ const useRotateMino = () => {
 };
 
 export default useRotateMino;
-
-//配列を90度右に回転
-function rotate(array: defaltCellProp[][]): defaltCellProp[][] {
-  const ROW = array.length;
-  const COL = array[0].length;
-  const row = ROW - 1;
-  const rotatedBlock: defaltCellProp[][] = [];
-  for (let c = 0; c < COL; c++) {
-    rotatedBlock[c] = [];
-    for (let r = 0; r < ROW; r++) {
-      rotatedBlock[c][r] = array[row - r][c];
-    }
-  }
-
-  return rotatedBlock;
-}

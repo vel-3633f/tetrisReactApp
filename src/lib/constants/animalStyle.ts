@@ -4,6 +4,6 @@ export const bgImgStyle = (imgName: string) => {
   return imgName === "border"
     ? { borderWidth: "1px" }
     : {
-        backgroundImage: `url("/animalImg/${noNumName}/${imgName}.png")`,
+        backgroundImage: `url("/animalImg/${noNumName}/${imgName}.jpg")`,
       };
 };
