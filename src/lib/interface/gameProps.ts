@@ -17,6 +17,7 @@ export interface defaltCellProp {
 
 export interface playerProp {
   point: number[];
+  isNextMino: boolean;
   isGameOver: boolean;
   blockMaxleng: number;
   blockHeight: number;
