@@ -15,6 +15,5 @@ export const getBlock = (
     );
   }
 
-
   return cuttedBlock;
 };
