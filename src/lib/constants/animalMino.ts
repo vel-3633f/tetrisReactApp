@@ -1,28 +1,68 @@
 import { defaultCellFalse, defaultCellTrue } from "./defaultCell";
 
-const huskyMino = [
+const catMino = [
   [
-    defaultCellTrue("husky01"),
+    defaultCellTrue("cat01"),
     defaultCellFalse("border"),
-    defaultCellTrue("husky02"),
+    defaultCellTrue("cat02"),
   ],
   [
-    defaultCellTrue("husky03"),
-    defaultCellTrue("husky04"),
-    defaultCellTrue("husky05"),
+    defaultCellTrue("cat03"),
+    defaultCellTrue("cat04"),
+    defaultCellTrue("cat05"),
   ],
   [
-    defaultCellTrue("husky06"),
-    defaultCellTrue("husky07"),
-    defaultCellTrue("husky08"),
-  ],
-  [
-    defaultCellTrue("husky09"),
-    defaultCellTrue("husky10"),
-    defaultCellTrue("husky11"),
+    defaultCellTrue("cat06"),
+    defaultCellTrue("cat07"),
+    defaultCellTrue("cat08"),
   ],
 ];
 
+const chickenMino = [
+  [
+    defaultCellFalse("border"),
+    defaultCellTrue("chicken01"),
+    defaultCellFalse("border"),
+  ],
+  [
+    defaultCellTrue("chicken02"),
+    defaultCellTrue("chicken03"),
+    defaultCellTrue("chicken04"),
+  ],
+  [
+    defaultCellTrue("chicken05"),
+    defaultCellTrue("chicken06"),
+    defaultCellTrue("chicken07"),
+  ],
+  [
+    defaultCellTrue("chicken08"),
+    defaultCellTrue("chicken09"),
+    defaultCellTrue("chicken10"),
+  ],
+];
+const cowMino = [
+  [
+    defaultCellTrue("cow01"),
+    defaultCellTrue("cow02"),
+    defaultCellTrue("cow03"),
+    defaultCellTrue("cow04"),
+    defaultCellTrue("cow05"),
+  ],
+  [
+    defaultCellFalse("border"),
+    defaultCellTrue("cow06"),
+    defaultCellTrue("cow07"),
+    defaultCellTrue("cow08"),
+    defaultCellFalse("border"),
+  ],
+  [
+    defaultCellFalse("border"),
+    defaultCellTrue("cow09"),
+    defaultCellTrue("cow10"),
+    defaultCellTrue("cow11"),
+    defaultCellFalse("border"),
+  ],
+];
 const elephantMino = [
   [
     defaultCellTrue("elephant01"),
@@ -46,8 +86,56 @@ const elephantMino = [
     defaultCellFalse("border"),
   ],
 ];
+const huskyMino = [
+  [
+    defaultCellTrue("husky01"),
+    defaultCellFalse("border"),
+    defaultCellTrue("husky02"),
+  ],
+  [
+    defaultCellTrue("husky03"),
+    defaultCellTrue("husky04"),
+    defaultCellTrue("husky05"),
+  ],
+  [
+    defaultCellTrue("husky06"),
+    defaultCellTrue("husky07"),
+    defaultCellTrue("husky08"),
+  ],
+  [
+    defaultCellTrue("husky09"),
+    defaultCellTrue("husky10"),
+    defaultCellTrue("husky11"),
+  ],
+];
+const rabbitMino = [
+  [
+    defaultCellTrue("rabbit01"),
+    defaultCellFalse("border"),
+    defaultCellTrue("rabbit02"),
+  ],
+  [
+    defaultCellTrue("rabbit03"),
+    defaultCellFalse("border"),
+    defaultCellTrue("rabbit04"),
+  ],
+  [
+    defaultCellTrue("rabbit05"),
+    defaultCellTrue("rabbit06"),
+    defaultCellTrue("rabbit07"),
+  ],
+  [
+    defaultCellTrue("rabbit08"),
+    defaultCellTrue("rabbit09"),
+    defaultCellTrue("rabbit10"),
+  ],
+];
 
 export const animalMinos = {
-  husky: huskyMino,
+  cat: catMino,
+  chicken: chickenMino,
+  cow: cowMino,
   elephant: elephantMino,
+  husky: huskyMino,
+  rabit: rabbitMino,
 };

@@ -18,7 +18,7 @@ export const GameScreen = () => {
   useEffect(() => {
     const updatedBoard = createMino(currentBoard);
     setCurrentBoard(updatedBoard);
-  }, []);
+  }, [player.isNextMino]);
 
   useEffect(() => {
     getPlayerPosition(currentBoard);

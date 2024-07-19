@@ -3,12 +3,10 @@ import clearFunc from "../features/clearFunc";
 import { getBlock } from "../features/getBlock";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
-import useNextBlock from "./useNextBlock";
 
 const useDropFunc = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  const [player] = useRecoilState(playerState);
-  const { createNextBlock } = useNextBlock();
+  const [player, setPlayer] = useRecoilState(playerState);
 
   const dropMove = () => {
     const upgradeBoard = clearFunc(currentBoard);
@@ -35,11 +33,12 @@ const useDropFunc = () => {
           player.blockWidth,
           ...blockMino[i]
         );
-        createNextBlock();
+        setPlayer({ ...player, isNextMino: true });
       }
     }
-
-    setCurrentBoard(upgradeBoard);
+    if (!player.isNextMino) {
+      setCurrentBoard(upgradeBoard);
+    }
   };
 
   return { dropMove };
