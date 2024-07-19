@@ -1,3 +1,4 @@
+import { AnimalMino } from "../interface/gameProps";
 import { defaultCellFalse, defaultCellTrue } from "./defaultCell";
 
 const catMino = [
@@ -131,11 +132,20 @@ const rabbitMino = [
   ],
 ];
 
-export const animalMinos = {
+export const animalAry = [
+  "cat",
+  "chicken",
+  "cow",
+  "elephant",
+  "husky",
+  "rabbit",
+];
+
+export const animalMinos: AnimalMino = {
   cat: catMino,
   chicken: chickenMino,
   cow: cowMino,
   elephant: elephantMino,
   husky: huskyMino,
-  rabit: rabbitMino,
+  rabbit: rabbitMino,
 };

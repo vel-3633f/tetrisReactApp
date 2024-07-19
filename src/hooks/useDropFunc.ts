@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import clearFunc from "../features/clearFunc";
+import dropCompFunc from "../features/dropCompFunc";
 import { getBlock } from "../features/getBlock";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
@@ -9,7 +10,7 @@ const useDropFunc = () => {
   const [player, setPlayer] = useRecoilState(playerState);
 
   const dropMove = () => {
-    const upgradeBoard = clearFunc(currentBoard);
+    let upgradeBoard = clearFunc(currentBoard);
     const blockMino = getBlock(player, currentBoard);
     const playerX = player.point[1];
     const playerY = player.point[0];
@@ -20,7 +21,9 @@ const useDropFunc = () => {
       if (upgradeBoard[playerY + player.blockHeight] === undefined) {
         isNextDownBlock = false;
       }
-
+      if (!isNextDownBlock) {
+        dropCompFunc(currentBoard);
+      }
       if (isNextDownBlock) {
         upgradeBoard[playerY + i + 1].splice(
           playerX,
@@ -28,17 +31,11 @@ const useDropFunc = () => {
           ...blockMino[i]
         );
       } else {
-        upgradeBoard[playerY + i].splice(
-          playerX,
-          player.blockWidth,
-          ...blockMino[i]
-        );
+        upgradeBoard = dropCompFunc(currentBoard);
         setPlayer({ ...player, isNextMino: true });
       }
     }
-    if (!player.isNextMino) {
-      setCurrentBoard(upgradeBoard);
-    }
+    setCurrentBoard(upgradeBoard);
   };
 
   return { dropMove };

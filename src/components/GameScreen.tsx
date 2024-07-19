@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import createMino from "../features/createMino";
+import useCreateMino from "../hooks/useCreateMino";
 import useDropFunc from "../hooks/useDropFunc";
 import usePlayerPosition from "../hooks/usePlayerPosition";
 import { bgImgStyle } from "../lib/constants/animalStyle";
@@ -10,6 +10,7 @@ import { playerState } from "../status/playerState";
 export const GameScreen = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
   const { getPlayerPosition } = usePlayerPosition();
+  const { createMino } = useCreateMino();
   const { dropMove } = useDropFunc();
   const player = useRecoilValue(playerState);
 

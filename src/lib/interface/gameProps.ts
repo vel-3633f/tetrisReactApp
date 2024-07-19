@@ -24,3 +24,7 @@ export interface playerProp {
   blockHeight: number;
   blockWidth: number;
 }
+
+export interface AnimalMino {
+  [key: string]: defaltCellProp[][];
+}
