@@ -6,6 +6,6 @@ export const iniPlayer = {
     isNextMino: false,
     blockMaxleng: 4,
     blockHeight: 4,
-    blockWidth: 3,
+    blockWidth: 4,
   },
 };

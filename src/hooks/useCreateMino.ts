@@ -12,10 +12,11 @@ const useCreateMino = () => {
     const aniHeight = animalMinos[ramdomAniName].length;
     const aniWidth = animalMinos[ramdomAniName][0].length;
 
-    playerUpdateFunc(aniWidth, aniHeight);
     for (let i = 0; i < aniHeight; i++) {
       upgradedBoard[i].splice(5, aniWidth, ...animalMinos[ramdomAniName][i]);
     }
+
+    playerUpdateFunc(aniWidth, aniHeight);
 
     return upgradedBoard;
   };

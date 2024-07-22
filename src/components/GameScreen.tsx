@@ -13,13 +13,12 @@ export const GameScreen = () => {
   const { createMino } = useCreateMino();
   const { dropMove } = useDropFunc();
   const player = useRecoilValue(playerState);
-
   const dropTime = player.dropTime;
 
   useEffect(() => {
     const updatedBoard = createMino(currentBoard);
     setCurrentBoard(updatedBoard);
-  }, [player.isNextMino]);
+  }, []);
 
   useEffect(() => {
     getPlayerPosition(currentBoard);
