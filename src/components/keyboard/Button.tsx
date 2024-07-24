@@ -2,11 +2,8 @@ import { buttonProps } from "../../lib/interface/gameProps";
 
 const Button = ({ item, func }: buttonProps) => {
   return (
-    <button
-      className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-      onClick={func}
-    >
-      {item}
+    <button className="w-[70px]" onClick={func}>
+      <img src={`/background/button/game/button-${item}.png`} alt="button" />
     </button>
   );
 };

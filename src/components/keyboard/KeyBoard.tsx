@@ -13,10 +13,10 @@ const KeyBoard = () => {
   
   return (
     <div className="flex justify-around items-center h-full">
-      <Button item="←" func={leftSideMove} />
-      <Button item="→" func={rightSideMove} />
-      <Button item="↑" func={rotateFunc} />
-      <Button item="↓" func={rotateFunc} />
+      <Button item="left" func={leftSideMove} />
+      <Button item="right" func={rightSideMove} />
+      <Button item="rotate" func={rotateFunc} />
+      <Button item="down" func={rotateFunc} />
     </div>
   );
 };

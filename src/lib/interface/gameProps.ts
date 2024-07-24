@@ -23,6 +23,8 @@ export interface playerProp {
   blockMaxleng: number;
   blockHeight: number;
   blockWidth: number;
+  playerMode: string;
+  score: number;
 }
 
 export interface AnimalMino {
