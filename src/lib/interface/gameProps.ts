@@ -26,5 +26,10 @@ export interface playerProp {
 }
 
 export interface AnimalMino {
-  [key: string]: defaltCellProp[][];
+  [key: string]: {
+    mino: defaltCellProp[][];
+    width: number;
+    height: number;
+    maxLength: number;
+  };
 }

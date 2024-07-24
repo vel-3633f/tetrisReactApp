@@ -1,24 +1,19 @@
 import { animalAry, animalMinos } from "../lib/constants/animalMino";
 import { defaltCellProp } from "../lib/interface/gameProps";
-import usePlayerUpdate from "./usePlayerUpdate";
 
 const useCreateMino = () => {
-  const { playerUpdateFunc } = usePlayerUpdate();
-
   const createMino = (currentBoard: defaltCellProp[][]) => {
-    const upgradedBoard = currentBoard.map((row) => [...row]);
+    const updatedBoard = currentBoard.map((row) => [...row]);
     const ramdomAnimalNum = Math.floor(Math.random() * animalAry.length);
     const ramdomAniName = animalAry[ramdomAnimalNum];
-    const aniHeight = animalMinos[ramdomAniName].length;
-    const aniWidth = animalMinos[ramdomAniName][0].length;
+    const aniHeight = animalMinos[ramdomAniName].mino.length;
+    const aniWidth = animalMinos[ramdomAniName].mino[0].length;
 
     for (let i = 0; i < aniHeight; i++) {
-      upgradedBoard[i].splice(5, aniWidth, ...animalMinos[ramdomAniName][i]);
+      updatedBoard[i].splice(5, aniWidth, ...animalMinos[ramdomAniName].mino[i]);
     }
 
-    playerUpdateFunc(aniWidth, aniHeight);
-
-    return upgradedBoard;
+    return { updatedBoard: updatedBoard };
   };
 
   return { createMino };

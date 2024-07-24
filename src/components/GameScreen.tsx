@@ -1,27 +1,29 @@
 import { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import useCreateMino from "../hooks/useCreateMino";
 import useDropFunc from "../hooks/useDropFunc";
-import usePlayerPosition from "../hooks/usePlayerPosition";
+import usePlayerUpdate from "../hooks/usePlayerUpdate";
 import { bgImgStyle } from "../lib/constants/animalStyle";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
 
 export const GameScreen = () => {
   const [currentBoard, setCurrentBoard] = useRecoilState(blockState);
-  const { getPlayerPosition } = usePlayerPosition();
   const { createMino } = useCreateMino();
   const { dropMove } = useDropFunc();
-  const player = useRecoilValue(playerState);
+  const [player] = useRecoilState(playerState);
   const dropTime = player.dropTime;
+  const { playerUpdateFunc } = usePlayerUpdate();
 
   useEffect(() => {
-    const updatedBoard = createMino(currentBoard);
-    setCurrentBoard(updatedBoard);
-  }, []);
+    if (!player.isNextMino) {
+      const { updatedBoard } = createMino(currentBoard);
+      setCurrentBoard(updatedBoard);
+    }
+  }, [player.isNextMino]);
 
   useEffect(() => {
-    getPlayerPosition(currentBoard);
+    playerUpdateFunc(currentBoard);
   }, [currentBoard]);
 
   useEffect(() => {

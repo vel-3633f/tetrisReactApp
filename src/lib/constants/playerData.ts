@@ -4,8 +4,8 @@ export const iniPlayer = {
     dropTime: 1000,
     isGameOver: false,
     isNextMino: false,
-    blockMaxleng: 4,
-    blockHeight: 4,
-    blockWidth: 4,
+    blockMaxleng: 5,
+    blockHeight: 5,
+    blockWidth: 5,
   },
 };
