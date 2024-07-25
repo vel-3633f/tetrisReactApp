@@ -23,7 +23,7 @@ export interface playerProp {
   blockMaxLength: number;
   blockHeight: number;
   blockWidth: number;
-  playerMode: string;
+  mode: string;
   score: number;
 }
 
