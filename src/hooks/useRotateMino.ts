@@ -48,20 +48,13 @@ const useRotateMino = () => {
           player.blockMaxLength,
           ...rotatedBlock[i]
         );
-      } else {
-        upgradedBoard[playerY + i].splice(
-          playerX,
-          player.blockMaxLength,
-          ...squareBlock[i]
-        );
       }
     }
 
     if (isMove) {
+      setCurrentBoard(upgradedBoard);
       setPlayer({ ...player, isLay: !player.isLay });
     }
-
-    setCurrentBoard(upgradedBoard);
   };
 
   return { rotateFunc };

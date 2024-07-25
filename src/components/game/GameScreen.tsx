@@ -16,11 +16,9 @@ export const GameScreen = () => {
   const { playerUpdateFunc } = usePlayerUpdate();
 
   useEffect(() => {
-    if (!player.isNextMino) {
-      const { updatedBoard } = createMino(currentBoard);
-      setCurrentBoard(updatedBoard);
-    }
-  }, [player.isNextMino]);
+    const { newMinoBoard } = createMino(currentBoard);
+    setCurrentBoard(newMinoBoard);
+  }, []);
 
   useEffect(() => {
     playerUpdateFunc(currentBoard);

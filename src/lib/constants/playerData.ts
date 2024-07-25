@@ -1,3 +1,5 @@
+
+
 export const iniPlayer = {
   data: {
     point: [0, 6],

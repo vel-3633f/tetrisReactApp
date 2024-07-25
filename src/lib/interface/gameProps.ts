@@ -23,6 +23,7 @@ export interface defaltCellProp {
 
 export interface playerProp {
   point: number[];
+  score: number;
   dropTime: number;
   isNextMino: boolean;
   isGameOver: boolean;
@@ -31,7 +32,6 @@ export interface playerProp {
   blockHeight: number;
   blockWidth: number;
   mode: string;
-  score: number;
 }
 
 export interface AnimalMino {
