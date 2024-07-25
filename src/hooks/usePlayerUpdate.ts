@@ -33,7 +33,7 @@ const usePlayerUpdate = () => {
       ...player,
       blockWidth: width,
       blockHeight: height,
-      blockMaxleng: max,
+      blockMaxLength: max,
       point: currentPosition,
     });
   };

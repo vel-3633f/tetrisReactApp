@@ -39,7 +39,7 @@ const useRotateMino = () => {
       });
     });
 
-    for (let i = 0; i < player.blockMaxleng; i++) {
+    for (let i = 0; i < player.blockMaxLength; i++) {
       const nextSideBlock =
         upgradedBoard[playerY + i][playerX + player.blockWidth];
       if (!nextSideBlock) isMove = false;
@@ -47,13 +47,13 @@ const useRotateMino = () => {
       if (isMove) {
         upgradedBoard[playerY + i].splice(
           playerX,
-          player.blockMaxleng,
+          player.blockMaxLength,
           ...rotatedBlock[i]
         );
       } else {
         upgradedBoard[playerY + i].splice(
           playerX,
-          player.blockMaxleng,
+          player.blockMaxLength,
           ...squareBlock[i]
         );
       }
