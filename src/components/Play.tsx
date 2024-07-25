@@ -1,6 +1,7 @@
 import { GameScreen } from "./game/GameScreen";
+import KeyBoard from "./game/keyboard/KeyBoard";
+import NextBoard from "./game/nextBoard/NextBoard";
 import ScoreAndMode from "./game/ScoreAndMode";
-import KeyBoard from "./keyboard/KeyBoard";
 
 const Play = () => {
   return (
@@ -8,7 +9,8 @@ const Play = () => {
       <div className="flex">
         <ScoreAndMode />
         <GameScreen />
-        <div className="">
+        <div className="flex flex-col justify-between items-end w-[250px] ">
+          <NextBoard />
           <KeyBoard />
         </div>
       </div>

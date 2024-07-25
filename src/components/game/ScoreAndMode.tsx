@@ -9,7 +9,7 @@ const ScoreAndMode = () => {
       <h3>MODE</h3>
       <div className="w-[300px] mt-2 mb-6">
         <img
-          src={`/background/button/title/button-mode-${player.mode}.png`}
+          src={`/background/button/game/icon-mode-${player.mode}.png`}
           alt="button"
         />
       </div>

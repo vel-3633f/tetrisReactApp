@@ -34,9 +34,9 @@ export const GameScreen = () => {
   }, [dropMove, dropTime]);
 
   return (
-    <div className="border-2 border-black rounded-lg">
+    <div className="border-2 border-border rounded-lg">
       <div className="bg-white border-8 border-forest rounded-lg">
-        <div className="border border-black ">
+        <div className="border border-border">
           {currentBoard.map((row, r_i) => {
             return (
               <div className="flex" key={r_i}>

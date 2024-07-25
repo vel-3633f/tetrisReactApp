@@ -2,6 +2,9 @@ const customColors = {
   forest: {
     DEFAULT: "#58a06e",
   },
+  border: {
+    DEFAULT: "#302e2b",
+  },
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -11,6 +14,7 @@ export default {
     extend: {
       colors: {
         forest: customColors.forest,
+        border:customColors.border,
       },
     },
     fontFamily: {

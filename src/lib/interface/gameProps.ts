@@ -6,6 +6,11 @@ export interface BlockProps {
 export interface buttonProps {
   item: string;
   func(): void;
+  className?: string;
+}
+
+export interface nextAnimalProps {
+  animal: string;
 }
 
 export interface defaltCellProp {
