@@ -1,5 +1,3 @@
-
-
 export const iniPlayer = {
   data: {
     point: [0, 6],
@@ -11,6 +9,5 @@ export const iniPlayer = {
     blockHeight: 5,
     blockWidth: 5,
     mode: "",
-    score: 0,
   },
 };

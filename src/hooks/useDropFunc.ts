@@ -13,35 +13,55 @@ const useDropFunc = () => {
   const { createMino } = useCreateMino();
   const { addRamdomAnimal } = useRamdomAnimal();
 
-
   const dropMove = () => {
     let upgradeBoard = clearFunc(currentBoard);
     const blockMino = getBlock(player, currentBoard);
     const playerX = player.point[1];
     const playerY = player.point[0];
     let isNextDownBlock = true;
+    const boardLine = upgradeBoard[playerY + player.blockHeight];
 
-    for (let i = 0; i < player.blockHeight; i++) {
-      isNextDownBlock = true;
-      if (upgradeBoard[playerY + player.blockHeight] === undefined) {
-        isNextDownBlock = false;
+    if (boardLine === undefined) {
+      isNextDownBlock = false;
+    } else {
+      for (let y = playerY; y < playerY + player.blockHeight; y++) {
+        for (let x = playerX; x < playerX + player.blockWidth; x++) {
+          const isDrop =
+            currentBoard[y][x].isAnimal &&
+            currentBoard[y + 1][x].isAnimal &&
+            !currentBoard[y + 1][x].isDropped;
+          if (isDrop) {
+            isNextDownBlock = false;
+          }
+        }
       }
+    }
 
-      if (isNextDownBlock) {
-        upgradeBoard[playerY + i + 1].splice(
-          playerX,
-          player.blockWidth,
-          ...blockMino[i]
-        );
-      } else {
-        upgradeBoard = dropCompFunc(currentBoard);
+    if (isNextDownBlock) {
+      for (let y = 0; y < player.blockHeight; y++) {
+        for (let x = 0; x < player.blockWidth; x++) {
+          const nextBlock = currentBoard[playerY + y + 1][playerX + x];
+          const currentBlock = currentBoard[playerY + y][playerX + x];
+          if (
+            nextBlock.isAnimal &&
+            !currentBlock.isAnimal &&
+            !nextBlock.isDropped
+          ) {
+            upgradeBoard[playerY + y + 1][playerX + x] =
+              currentBoard[playerY + y + 1][playerX + x];
+          } else {
+            upgradeBoard[playerY + y + 1][playerX + x] = blockMino[y][x];
+          }
+        }
       }
+    } else {
+      upgradeBoard = dropCompFunc(currentBoard);
     }
     const { newMinoBoard } = createMino(upgradeBoard);
 
     if (!isNextDownBlock) {
       upgradeBoard = newMinoBoard;
-      addRamdomAnimal()
+      addRamdomAnimal();
       setPlayer({ ...player, isLay: false });
     }
     setCurrentBoard(upgradeBoard);
