@@ -20,7 +20,7 @@ export interface playerProp {
   dropTime: number;
   isNextMino: boolean;
   isGameOver: boolean;
-  blockMaxleng: number;
+  blockMaxLength: number;
   blockHeight: number;
   blockWidth: number;
   playerMode: string;
