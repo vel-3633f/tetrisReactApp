@@ -10,8 +10,6 @@ const useRotateMino = () => {
   const [player, setPlayer] = useRecoilState(playerState);
   const playerX = player.point[1];
   const playerY = player.point[0];
-  const nextWidth = player.blockHeight;
-  const nextHeight = player.blockWidth;
 
   const rotateFunc = () => {
     const upgradedBoard = currentBoard.map((row) => [...row]);
