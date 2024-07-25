@@ -15,9 +15,10 @@ export interface nextAnimalProps {
 
 export interface defaltCellProp {
   isOccupied: boolean;
+  isAnimal: boolean;
+  isDropped: boolean;
   className: string;
   direction: string;
-  isDropped: boolean;
 }
 
 export interface playerProp {
@@ -25,6 +26,7 @@ export interface playerProp {
   dropTime: number;
   isNextMino: boolean;
   isGameOver: boolean;
+  isLay: boolean;
   blockMaxLength: number;
   blockHeight: number;
   blockWidth: number;

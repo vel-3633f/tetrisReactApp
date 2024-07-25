@@ -5,8 +5,9 @@ export const directionContainer = {
   left: "-rotate-90",
 };
 
-export const defaultCellTrue = (className: string) => ({
-  isOccupied: true,
+export const defaultCellTrue = (className: string, animal: boolean) => ({
+  isOccupied: animal,
+  isAnimal: animal,
   className: className,
   direction: directionContainer.up,
   isDropped: true,
@@ -14,6 +15,7 @@ export const defaultCellTrue = (className: string) => ({
 
 export const defaultCellFalse = (className: string) => ({
   isOccupied: false,
+  isAnimal: false,
   className: className,
   direction: directionContainer.up,
   isDropped: false,

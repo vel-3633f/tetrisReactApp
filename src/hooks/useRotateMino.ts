@@ -60,7 +60,7 @@ const useRotateMino = () => {
     }
 
     if (isMove) {
-      setPlayer({ ...player, blockWidth: nextWidth, blockHeight: nextHeight });
+      setPlayer({ ...player, isLay: !player.isLay });
     }
 
     setCurrentBoard(upgradedBoard);

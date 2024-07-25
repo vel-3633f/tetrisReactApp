@@ -12,22 +12,36 @@ const usePlayerUpdate = () => {
     let height = 0;
     const currentPosition = [];
 
-    animalBoard: for (let y = 0; y < boardSize[1]; y++) {
+    Board: for (let y = 0; y < boardSize[1]; y++) {
       for (let x = 0; x < boardSize[0]; x++) {
         const currentBlock = upgradeBoard[y][x];
 
         if (currentBlock.isDropped) {
-          const aniName = currentBlock.className.slice(0, -2);
-          console.log(x, y, aniName);
-          width = animalMinos[aniName].width;
-          height = animalMinos[aniName].height;
           currentPosition.push(y, x);
+          break Board;
+        }
+      }
+    }
+    animalBoard: for (let y = 0; y < boardSize[1]; y++) {
+      for (let x = 0; x < boardSize[0]; x++) {
+        const currentBlock = upgradeBoard[y][x];
+
+        if (currentBlock.isAnimal && currentBlock.isDropped) {
+          const aniName = currentBlock.className.slice(0, -2);
+          if (player.isLay) {
+            width = animalMinos[aniName].height;
+            height = animalMinos[aniName].width;
+          } else {
+            width = animalMinos[aniName].width;
+            height = animalMinos[aniName].height;
+          }
 
           break animalBoard;
         }
       }
     }
 
+    console.log(player);
     const max = width >= height ? width : height;
     setPlayer({
       ...player,
