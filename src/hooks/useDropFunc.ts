@@ -4,6 +4,7 @@ import dropCompFunc from "../features/dropCompFunc";
 import { getBlock } from "../features/getBlock";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
+import useCheckLine from "./useCheckLine";
 import useCreateMino from "./useCreateMino";
 import useRamdomAnimal from "./useRamdomAnimal";
 
@@ -12,6 +13,7 @@ const useDropFunc = () => {
   const [player, setPlayer] = useRecoilState(playerState);
   const { createMino } = useCreateMino();
   const { addRamdomAnimal } = useRamdomAnimal();
+  const { checkLine } = useCheckLine();
 
   const dropMove = () => {
     let upgradeBoard = clearFunc(currentBoard);
@@ -56,6 +58,7 @@ const useDropFunc = () => {
       }
     } else {
       upgradeBoard = dropCompFunc(currentBoard);
+      checkLine(currentBoard);
     }
     const { newMinoBoard } = createMino(upgradeBoard);
 
