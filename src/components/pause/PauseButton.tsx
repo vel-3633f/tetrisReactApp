@@ -9,10 +9,7 @@ const PauseButton = ({ func, item, size }: buttonProps) => {
         onClick={func}
         style={{ width: `${size}px` }}
       >
-        <img
-          src={`public/background/button/pause/button-${item}.png`}
-          alt="button"
-        />
+        <img src={`/background/button/pause/button-${item}.png`} alt="button" />
       </button>
     </div>
   );
