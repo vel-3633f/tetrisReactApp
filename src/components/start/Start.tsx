@@ -10,7 +10,7 @@ const Start = () => {
       ...player,
       isGameOver: false,
       mode: "easy",
-      dropTime: 2000,
+      dropTime: 500,
     });
   };
   const normalFunc = () => {
@@ -18,7 +18,7 @@ const Start = () => {
       ...player,
       isGameOver: false,
       mode: "normal",
-      dropTime: 1000,
+      dropTime: 250,
     });
   };
   const hardFunc = () => {
@@ -26,7 +26,7 @@ const Start = () => {
       ...player,
       isGameOver: false,
       mode: "hard",
-      dropTime: 500,
+      dropTime: 100,
     });
   };
 

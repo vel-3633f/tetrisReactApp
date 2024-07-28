@@ -4,6 +4,7 @@ import useCreateMino from "../../hooks/useCreateMino";
 import useDropFunc from "../../hooks/useDropFunc";
 import usePlayerUpdate from "../../hooks/usePlayerUpdate";
 import { bgImgStyle } from "../../lib/constants/animalStyle";
+import { builtRows } from "../../lib/constants/defaultBoard";
 import { blockState } from "../../status/blockState";
 import { playerState } from "../../status/playerState";
 
@@ -19,6 +20,10 @@ export const GameScreen = () => {
     const { newMinoBoard } = createMino(currentBoard);
     setCurrentBoard(newMinoBoard);
   }, []);
+
+  useEffect(() => {
+    setCurrentBoard(builtRows);
+  }, [player.isGameOver]);
 
   useEffect(() => {
     playerUpdateFunc(currentBoard);

@@ -41,6 +41,7 @@ const usePlayerUpdate = () => {
       }
     }
 
+
     const max = width >= height ? width : height;
     setPlayer({
       ...player,
@@ -50,7 +51,6 @@ const usePlayerUpdate = () => {
       point: currentPosition,
     });
   };
-
 
   return { playerUpdateFunc };
 };

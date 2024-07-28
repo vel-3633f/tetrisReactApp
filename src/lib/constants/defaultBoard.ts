@@ -3,7 +3,7 @@ import { defaultCellFalse } from "./defaultCell";
 
 export const boardSize = [15, 20];
 
-const builtRows = Array.from({ length: boardSize[1] }, () =>
+export const builtRows = Array.from({ length: boardSize[1] }, () =>
   Array.from({ length: boardSize[0] }, () => ({
     ...defaultCellFalse("border"),
   }))

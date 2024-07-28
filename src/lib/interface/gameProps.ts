@@ -7,6 +7,7 @@ export interface buttonProps {
   item: string;
   func(): void;
   className?: string;
+  size?: string;
 }
 
 export interface nextAnimalProps {
@@ -26,6 +27,7 @@ export interface playerProp {
   dropTime: number;
   isNextMino: boolean;
   isGameOver: boolean;
+  isPause: boolean;
   isLay: boolean;
   blockMaxLength: number;
   blockHeight: number;

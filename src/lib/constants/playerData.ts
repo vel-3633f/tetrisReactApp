@@ -3,6 +3,7 @@ export const iniPlayer = {
     point: [0, 6],
     dropTime: 1000,
     isGameOver: true,
+    isPause:false,
     isNextMino: false,
     isLay: false,
     blockMaxLength: 5,

@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil";
 import clearFunc from "../features/clearFunc";
 import dropCompFunc from "../features/dropCompFunc";
 import { getBlock } from "../features/getBlock";
+import { isGameOverCheck } from "../features/isGameOverCheck";
 import { blockState } from "../status/blockState";
 import { playerState } from "../status/playerState";
 import useCheckLine from "./useCheckLine";
@@ -22,6 +23,7 @@ const useDropFunc = () => {
     const playerY = player.point[0];
     let isNextDownBlock = true;
     const boardLine = upgradeBoard[playerY + player.blockHeight];
+    let isGameOver = false;
 
     if (boardLine === undefined) {
       isNextDownBlock = false;
@@ -58,14 +60,15 @@ const useDropFunc = () => {
       }
     } else {
       upgradeBoard = dropCompFunc(currentBoard);
-      checkLine(currentBoard);
+      isGameOver = isGameOverCheck(isGameOver, currentBoard);
+      upgradeBoard = checkLine(upgradeBoard);
     }
     const { newMinoBoard } = createMino(upgradeBoard);
 
     if (!isNextDownBlock) {
       upgradeBoard = newMinoBoard;
       addRamdomAnimal();
-      setPlayer({ ...player, isLay: false });
+      setPlayer({ ...player, isLay: false, isGameOver: isGameOver });
     }
     setCurrentBoard(upgradeBoard);
   };

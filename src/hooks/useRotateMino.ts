@@ -38,8 +38,11 @@ const useRotateMino = () => {
     });
 
     for (let i = 0; i < player.blockMaxLength; i++) {
+      const difference = player.blockMaxLength - player.blockWidth;
+      console.log(difference)
       const nextSideBlock =
-        upgradedBoard[playerY + i][playerX + player.blockWidth];
+        upgradedBoard[playerY + i][playerX + player.blockWidth + difference];
+
       if (!nextSideBlock) isMove = false;
 
       if (isMove) {
